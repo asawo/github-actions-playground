@@ -1,0 +1,19 @@
+name: Run job on another branch
+
+on:
+  workflow_dispatch: true
+
+jobs:
+  fetch-translation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      continue-on-error: true
+      with:
+        ref: test/branch
+     
+    - name: if label exists, echo something
+      if: ${{ github.event.label.name == 'translation-sent' }}
+      run: echo "echo something"
