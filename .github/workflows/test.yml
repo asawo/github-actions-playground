@@ -20,5 +20,4 @@ jobs:
         ref: test/branch
      
     - name: if label exists, echo something
-      if: ${{ github.event.label.name == 'hello' }}
-      run: echo "echo something"
+      run: echo ${{ github.event.label.name }}
