@@ -1,4 +1,4 @@
-name: Run job on another branch
+name: Test job
 
 on:
   workflow_dispatch:
@@ -20,4 +20,4 @@ jobs:
       run: git branch
      
     - name: if label exists, echo something
-      run: echo ${{ github }}
+      run: echo ${{ toJSON(github) }}
