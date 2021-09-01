@@ -1,10 +1,15 @@
 name: Run job on another branch
 
 on:
-  workflow_dispatch: true
+  workflow_dispatch:
+    inputs:
+      labelName:
+        description: 'label name'
+        required: false
+        default: 'hello'
 
 jobs:
-  fetch-translation:
+  testing-stuff:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,5 +20,5 @@ jobs:
         ref: test/branch
      
     - name: if label exists, echo something
-      if: ${{ github.event.label.name == 'translation-sent' }}
+      if: ${{ github.event.label.name == 'hello' }}
       run: echo "echo something"
