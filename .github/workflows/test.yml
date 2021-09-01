@@ -7,8 +7,6 @@ on:
         description: 'label name'
         required: false
         default: 'hello'
-  pull_request:
-    types: [ labeled ]
 
 jobs:
   testing-stuff:
@@ -16,7 +14,10 @@ jobs:
 
     steps:
     - name: Checkout
-      run: git pull && git checkout test/branch
+      uses: actions/checkout@v2
+    
+    - name: Manually run git checkout
+      run: git checkout test/branch
      
-    - name: if label exists, echo something
-      run: echo ${{ github.event.label.name }}
+    - name: check github object
+      run: echo ${{ github }}
