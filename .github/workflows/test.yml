@@ -18,9 +18,9 @@ jobs:
       with: 
         ref: test/branch
     
-    - name: Manually run git checkout
+    - name: Curl github API
       run: |
-        curl https://api.github.com/repos/asawo/github-actions-playground/labels -u asawo:GITHUB_TOKEN
+        curl https://api.github.com/repos/${{github.repository}}/issues -u asawo:GITHUB_TOKEN
      
     - name: if label exists, echo something
       run: echo ${{ toJSON(github) }}
