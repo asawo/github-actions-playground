@@ -20,11 +20,7 @@ jobs:
     
     - name: Manually run git checkout
       run: |
-        git config --global user.name 'Bot'
-        git config --global user.email '<>'
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git pull
-        git branch
+        curl https://api.github.com/repos/asawo/github-actions-playground/labels -u asawo:GITHUB_TOKEN
      
     - name: if label exists, echo something
       run: echo ${{ toJSON(github) }}
