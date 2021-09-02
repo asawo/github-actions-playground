@@ -21,6 +21,7 @@ jobs:
         git config --global user.name 'Bot'
         git config --global user.email '<>'
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git pull
         git branch
      
     - name: if label exists, echo something
