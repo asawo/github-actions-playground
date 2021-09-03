@@ -20,7 +20,10 @@ jobs:
     
     - name: Curl github API
       run: |
-        curl https://api.github.com/repos/${{github.repository}}/issues -u asawo:GITHUB_TOKEN
+        curl https://api.github.com/repos/${{github.repository}}/issues/${PR_NUMBER} -u asawo:GITHUB_TOKEN
      
     - name: if label exists, echo something
       run: echo ${{ toJSON(github) }}
+      
+    env:
+      PR_NUMBER: 1
